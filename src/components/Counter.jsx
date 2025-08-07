@@ -1,28 +1,19 @@
-import React, { useState } from 'react'
+import { useRef } from "react";
 
 const Counter = () => {
+  const countRef = useRef(0);
 
-    const [count, setCount] = useState(0)
+  const increaseCount = () => {
+    countRef.current += 1;
+    console.log("현재 count:", countRef.current);
+  };
 
-    const incrementCount = () => {
-        setCount(count + 1)
-    }
-    const decrementCount = () => {
-        setCount(count - 1)
-    }
-    const resetCount = () => {
-        setCount(0)
-    }
-    return (
-        <div>
-            <h1>
-                현재 Count :  {count}
-            </h1>
-            <button onClick={decrementCount}>-</button>
-            <button onClick={resetCount}>reset</button>
-            <button onClick={incrementCount}>+</button>
-        </div>
-    )
-}
+  return (
+    <div>
+      <p>현재의 카운트: {countRef.current}</p>
+      <button onClick={increaseCount}>+1씩 증가</button>
+    </div>
+  );
+};
 
-export default Counter
+export default Counter;

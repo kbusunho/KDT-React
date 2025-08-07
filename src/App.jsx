@@ -1,22 +1,16 @@
-// App.jsx
 import './App.css'
+import FocusInput from './components/FocusInput'
 import Counter from './components/Counter'
-import Exam1 from './components/Exam1'
-import Exam2 from './components/Exam2'
-import Exam3 from './components/Exam3'
+import InputTracker from './components/InputTracker'
 
 function App() {
-  const User = {
-    name: "Elice",
-    age: 20
-  }
+  
 
   return (
     <div>
-      <Exam1 {...User} />
-      <Exam2 />
-      <Exam3 />
+      <FocusInput />
       <Counter />
+      <FocusInput />
     </div>
   )
 }
