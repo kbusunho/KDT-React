@@ -1,13 +1,12 @@
-
 import './App.css'
-import Timer from './components/Timer'
-import { useState } from 'react'
+import SquareCaic from './components/SquareCaic'
+
 function App() {
 
 
   return (
-    <div className='app-container'>
-      <Timer />
+    <div>
+      <SquareCaic />
     </div>
   )
 }
