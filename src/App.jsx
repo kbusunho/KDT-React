@@ -1,14 +1,3 @@
-import './App.css'
-import Lifecycle from './components/Lifecycle'
+import { createContext } from "react";
 
-function App() {
-  
-
-  return (
-    <div>
-      <Lifecycle /> 
-    </div>
-  )
-}
-
-export default App
+export const MyContext=createContext()
