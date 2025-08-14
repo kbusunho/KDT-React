@@ -1,12 +1,13 @@
 import React from 'react'
 
-const Viewer = ({count }) => {
-    console.log()
-  return (
-    <div>
-        현재 count : <span>{count}</span>
-    </div>
-  )
+const Viewer = ({ count }) => {
+    return (
+        <div>
+            <h2>
+                현재 count : {count}
+            </h2>
+        </div>
+    )
 }
 
 export default Viewer

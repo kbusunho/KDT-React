@@ -1,16 +1,21 @@
 import React from 'react'
 
-const Controller = () => {
+const Controller = ({ onClickButton }) => {
 
-  return(
-    <div>
-        <button>-100</button>
-        <button>-10</button>
-        <button>-1</button>
-        <button>+1</button>
-        <button>+10</button>
-        <button>+100</button>
-    </div>
-  )
+    const buttonValues = [-100, -10, -1, 1, 10, 100]
+
+    return (
+        <div>
+            {buttonValues.map((btn, i) => (
+                <button key={i}
+                onClick={()=>onClickButton(btn)}
+                >
+                    {btn>0? `+${btn}`:btn}
+                </button>
+            ))}
+
+        </div>
+    )
 }
-export default Controller;
+
+export default Controller
