@@ -1,4 +1,5 @@
 import React from 'react'
+import AboutHero from './about/AboutHero';
 
 const About = () => {
  const infoList = [
