@@ -7,11 +7,18 @@ dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 3000;
+app.use(cors());
+app.use(express.json());
+
 
 mongoose
   .connect(process.env.MONGO_URI)
   .then(() => console.log("Mongodb연결 성공"))
   .catch((err) => console.log("연결 실패", err));
+
+
+const todoRoutes= require('./routes/todoRoutes')
+app.use("/api/todos",todoRoutes)
 
   app.get("/", (req, res) => {
   res.send("Hello Express!");
