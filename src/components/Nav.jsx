@@ -15,6 +15,9 @@ const Nav = () => {
                 <NavLink to="/about">소개</NavLink>
             </li>
             <li>
+                <NavLink to="/Community">커뮤니티</NavLink>
+            </li>
+            <li>
                 <NavLink to="/board">게시판리스트</NavLink>
             </li>
         </ul>
