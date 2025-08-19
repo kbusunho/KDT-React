@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+const mongoose = require("mongoose")
 
 const todoSchema = new mongoose.Schema(
     {
@@ -16,9 +16,9 @@ const todoSchema = new mongoose.Schema(
             default:Date.now
         }
     },
-    {timeseries:true}
+    {timestamps:true}
 )
 
-const Todo = mongoose.model("Todo", todoSchema);
+const Todo =mongoose.model("Todo",todoSchema)
 
 module.exports=Todo
