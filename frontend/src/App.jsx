@@ -46,7 +46,6 @@ function App() {
       console.log("추가 실패", error)
     }
   }
-
   const onDelete = async (id) => {
     try {
       if (!confirm("정말 삭제할까요?")) return
@@ -64,7 +63,6 @@ function App() {
       console.error("삭제 실패", error)
     }
   }
-
   const onUpdateChecked = async (id, next) => {
 
     try {
@@ -87,15 +85,15 @@ function App() {
 
   }
   const onUpdateText = async (id, next) => {
-    const value =next?.trim()
+    const value = next?.trim()
 
-    if(!value) return
+    if (!value) return
 
 
     try {
 
       const { data } = await axios.patch(`${API}/${id}/text`, {
-        text:value
+        text: value
       })
 
       if (Array.isArray(data?.todos)) {
@@ -111,15 +109,41 @@ function App() {
     }
 
   }
+  const onUpdate = async (id, next) => {
+    try {
+      const current = Array.isArray(todos) ? todos.find(t => t._id == id) : null
+      if (!current) throw new Error("해당 ID의 todo가 없습니다.")
+
+      const { data } = await axios.put(`${API}/${id}`, next)
+
+      const updated = data?.updated ?? data?.todo ?? data;
+      setTodos(
+        prev => prev.map(t => (t._id === updated._id ? updated : t))
+      )
+
+    } catch (error) {
+      console.error("Todo update 실패", error)
+    }
+  }
+
+  const onUpdateTodo = async (id, next) => {
+    try {
+      await onUpdate(id, next)
+
+    } catch (error) {
+      console.error("Todo update 실패", error)
+
+    }
+  }
 
   return (
     <div className='App'>
       <Header />
       <TodoEditor onCreate={onCreate} />
       <TodoList
-        todos={Array.isArray(todos)? todos:[]}
+        todos={Array.isArray(todos) ? todos : []}
         onUpdateChecked={onUpdateChecked}
-        onUpdateText={onUpdateText}
+        onUpdateTodo={onUpdateTodo}
         onDelete={onDelete} />
     </div>
   )
